@@ -65,9 +65,8 @@ It aims to monitor and control garage doors and related devices via your local n
   - “Reboot Box”  
   - Per-item “Impulse” (momentary action)
 - **Switch** (`switch`): “SSH Access” on/off
-- **(Optional) Sensor** (`sensor`): Item states via a shared coordinator  
-  > Enable by adding `Platform.SENSOR` to `PLATFORMS` in `__init__.py` if you want sensors visible.
-
+- **Sensor** (`sensor`): Item states via a shared coordinator
+  
 ---
 
 ## Troubleshooting / FAQ
