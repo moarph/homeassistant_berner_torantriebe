@@ -1,6 +1,6 @@
 {
-  "domain": "bernerbox",
-  "name": "BERNER-BOX",
+  "domain": "berner",
+  "name": "Berner Box",
   "version": "1.0.0",
   "requirements": [],
   "codeowners": ["@moarph"],
