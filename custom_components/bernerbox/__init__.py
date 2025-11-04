@@ -9,7 +9,7 @@ from .sensor import BernerBoxCoordinator  # nur die Klasse, kein DOMAIN-Import
 DOMAIN = "bernerbox"
 
 # ➕ SWITCH hinzu
-PLATFORMS: list[Platform] = [Platform.BUTTON, Platform.COVER, Platform.SWITCH]
+PLATFORMS: list[Platform] = [Platform.BUTTON, Platform.COVER, Platform.SWITCH, Platform.SENSOR]
 
 
 async def async_setup(hass: HomeAssistant, config: dict) -> bool:
