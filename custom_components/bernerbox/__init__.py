@@ -3,6 +3,7 @@ from __future__ import annotations
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.const import Platform
+from homeassistant.helpers import config_validation as cv
 
 from .sensor import BernerBoxCoordinator  # nur die Klasse, kein DOMAIN-Import
 
@@ -11,6 +12,7 @@ DOMAIN = "bernerbox"
 # ➕ SWITCH hinzu
 PLATFORMS: list[Platform] = [Platform.BUTTON, Platform.COVER, Platform.SWITCH, Platform.SENSOR]
 
+CONFIG_SCHEMA = cv.config_entry_only_config_schema(DOMAIN)
 
 async def async_setup(hass: HomeAssistant, config: dict) -> bool:
     return True
