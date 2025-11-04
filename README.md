@@ -1,92 +1,104 @@
-# Berner Box (Berner Torantriebe) – Home Assistant (Custom Integration)
+# Berner Box (Berner Torantriebe) – Home Assistant Custom Integration
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://hacs.xyz)
+[![Validate with hassfest](https://github.com/moarph/homeassistant_berner_torantriebe/actions/workflows/hassfest.yaml/badge.svg)](https://github.com/moarph/homeassistant_berner_torantriebe/actions/workflows/hassfest.yaml)
 
-> **Status:** Funktionsfähige Custom-Integration mit UI-Setup (Config-Flow) und Entitäten (Cover/Buttons/Switch, Sensor/Coordinator).  
-> API-Aufrufe erfolgen lokal (iot_class: local_polling).
-
----
-
-## ✨ Überblick
-
-Diese Integration bindet die **BERNER-BOX** (Berner Torantriebe KG) in Home Assistant ein.  
-Unterstützt werden u. a. **Garage-Covers**, **Impuls-Buttons**, ein **SSH-Schalter** und **Status-Sensoren**.
+> **Status:** Installable custom integration with UI setup (config flow).  
+> Implements covers, buttons, switches (and optional sensors) for the Berner Box.  
+> Current data flow is local (HA `iot_class: local_polling`).
 
 ---
 
-## ✅ Voraussetzungen
+## Overview
 
-- Home Assistant **2024.6.0+** (empfohlen)
-- **HACS** installiert
+This integration connects the **Berner Box** (Berner Torantriebe) to Home Assistant.  
+It aims to monitor and control garage doors and related devices via your local network.
 
----
-
-## 🛠️ Installation (HACS, empfohlen)
-
-1. **Custom Repository hinzufügen**  
-   Öffne diesen My-Link und bestätige dein Home-Assistant-System:  
-   **[HACS: Repository hinzufügen](https://my.home-assistant.io/redirect/hacs_repository/?owner=moarph&repository=homeassistant_berner_torantriebe&category=integration)**
-2. In HACS → **Integrationen** → nach **Berner Box** suchen → **Installieren**.
-3. Home Assistant **neu starten**.
-
-### Manuell (ohne HACS)
-
-1. Dieses Repository herunterladen.
-2. Den Ordner `custom_components/bernerbox` nach  
-   `<config>/custom_components/bernerbox` kopieren.
-3. Home Assistant **neu starten**.
+- **Domain**: `bernerbox`  
+- **Folder**: `custom_components/bernerbox`
 
 ---
 
-## ⚙️ Einrichtung
+## Requirements
 
-- **Einstellungen → Geräte & Dienste → Integration hinzufügen → „Berner Box“**,  
-  oder direkt per My-Link:  
-  **[Integration jetzt hinzufügen](https://my.home-assistant.io/redirect/config_flow_start/?domain=bernerbox)**
-- Eingaben: **Host/IP** (ohne/mit http), **Benutzername**, **Passwort**.  
-  Die Integration ermittelt automatisch `api_key`, `user_id` und die `ids` deiner Items.
+- Home Assistant **2024.6.0 or newer**
+- **HACS** installed (recommended)
 
 ---
 
-## 🔧 Entitäten (Überblick)
+## Installation
 
-- **Cover** (`cover`): Garage-Tore (Open/Close).  
+### A) HACS (recommended)
+
+1. Add this repository as a **Custom Repository** in HACS (category: Integration).  
+   **My link:**  
+   **[Add this repo to HACS](https://my.home-assistant.io/redirect/hacs_repository/?owner=moarph&repository=homeassistant_berner_torantriebe&category=integration)**
+2. In HACS → **Integrations** → search for **“Berner Box”** → **Install**.
+3. **Restart** Home Assistant.
+
+### B) Manual
+
+1. Download this repository.
+2. Copy the folder `custom_components/bernerbox` to:  
+   `<config>/custom_components/bernerbox`
+3. **Restart** Home Assistant.
+
+---
+
+## Configuration
+
+- Go to **Settings → Devices & Services → Add Integration → “Berner Box”**,  
+  or use this My link:  
+  **[Start config flow](https://my.home-assistant.io/redirect/config_flow_start/?domain=bernerbox)**
+- Enter your **Host/IP**, **Username**, and **Password**.  
+  The flow will discover your items and create a config entry.
+
+> Credentials are stored locally in Home Assistant.
+
+---
+
+## Entities (current set)
+
+- **Cover** (`cover`): Garage door control (open/close/stop; state).  
 - **Button** (`button`):  
-  - „Status aktualisieren“ (triggert Update-All + Refresh)
-  - „Box neu starten“ (Reboot)
-  - „<Item> Impuls“ (Momentkontakt pro Item)
-- **Switch** (`switch`): „SSH Zugriff“ (on/off)  
-- **Sensor** (`sensor`): Status pro Item via gemeinsamem **Coordinator**
-
-> Die Abfragen & Aktionen laufen gegen die lokalen Box-Endpoints.
-
----
-
-## 🔄 Updates
-
-- Mit HACS wirst du über neue Versionen informiert (empfohlen: Releases wie `v1.0.0`).
+  - “Update all / Refresh”  
+  - “Reboot Box”  
+  - Per-item “Impulse” (momentary action)
+- **Switch** (`switch`): “SSH Access” on/off
+- **(Optional) Sensor** (`sensor`): Item states via a shared coordinator  
+  > Enable by adding `Platform.SENSOR` to `PLATFORMS` in `__init__.py` if you want sensors visible.
 
 ---
 
-## ❓ FAQ
+## Troubleshooting / FAQ
 
-**Ich sehe keine Entitäten?**  
-Prüfe, ob der Config-Flow vollständig war und ob Items gefunden wurden. Danach HA neu starten.
+**I don’t see entities after setup.**  
+Make sure the config flow completed and items were found. Then restart Home Assistant.
 
-**My-Links funktionieren nicht?**  
-Stelle sicher, dass die *My Home Assistant*-Integration aktiv ist (Teil von `default_config`).
+**My links don’t open in HA.**  
+Ensure the **My Home Assistant** helper is enabled (part of `default_config`).
 
----
-
-## 🧩 Entwickeln
-
-- Domain/Ordner: `custom_components/bernerbox`  
-- Manifest: `manifest.json` enthält u. a. `domain`, `name`, `version`, `documentation`, `issue_tracker`, `codeowners`, `config_flow`.  
-- Config-Flow: `config_flow.py` (UI-Setup)  
-- Optional: `translations/<lang>.json` für lokalisierte Texte.
+**HACS shows “Custom” badge.**  
+That’s expected until the integration is submitted to the HACS store.
 
 ---
 
-## 📝 Lizenz
+## Updating
+
+- If you publish GitHub **releases** (e.g., `v1.0.0`), HACS will offer updates via the release tags.  
+- Without releases, HACS tracks the latest commit.
+
+---
+
+## Development notes
+
+- Integration domain: `bernerbox` (folder and `manifest.json: "domain": "bernerbox"` must match).
+- UI setup via `config_flow.py` (`"config_flow": true` in `manifest.json`).
+- Translations can be added in `custom_components/bernerbox/translations/` (e.g., `en.json`, `de.json`).
+- For status polling and shared state, a `DataUpdateCoordinator` is used.
+
+---
+
+## License
 
 MIT
