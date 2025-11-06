@@ -101,3 +101,11 @@ That’s expected until the integration is submitted to the HACS store.
 ## License
 
 MIT
+
+---
+
+## Disclaimer
+
+This is an **unofficial** integration and is **not affiliated with, endorsed by, or supported by Berner Torantriebe KG**.
+
+Use at your own risk. The author is not responsible for any damage.
