@@ -1,12 +1,14 @@
 {
   "domain": "bernerbox",
-  "name": "BERNER-BOX",
+  "name": "Berner Box (Berner Torantriebe)",
   "codeowners": ["@moarph"],
   "config_flow": true,
   "documentation": "https://github.com/moarph/homeassistant_berner_torantriebe#readme",
-  "iot_class": "local_polling",
   "issue_tracker": "https://github.com/moarph/homeassistant_berner_torantriebe/issues",
+  "iot_class": "local_polling",
+  "integration_type": "hub",
   "requirements": [],
+  "loggers": ["custom_components.bernerbox"],
   "version": "1.0.0"
 }
 
