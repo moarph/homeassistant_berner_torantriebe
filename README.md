@@ -1,5 +1,6 @@
 # Berner Box (Berner Torantriebe) – Home Assistant Custom Integration
 
+![GitHub release](https://img.shields.io/github/v/release/moarph/homeassistant_berner_torantriebe.svg)
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://hacs.xyz)
 [![Validate with hassfest](https://github.com/moarph/homeassistant_berner_torantriebe/actions/workflows/hassfest.yaml/badge.svg)](https://github.com/moarph/homeassistant_berner_torantriebe/actions/workflows/hassfest.yaml)
 [![HACS validation](https://github.com/moarph/homeassistant_berner_torantriebe/actions/workflows/hacs.yaml/badge.svg)](https://github.com/moarph/homeassistant_berner_torantriebe/actions/workflows/hacs.yaml)
