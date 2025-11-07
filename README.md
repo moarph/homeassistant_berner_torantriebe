@@ -2,6 +2,7 @@
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://hacs.xyz)
 [![Validate with hassfest](https://github.com/moarph/homeassistant_berner_torantriebe/actions/workflows/hassfest.yaml/badge.svg)](https://github.com/moarph/homeassistant_berner_torantriebe/actions/workflows/hassfest.yaml)
+[![HACS validation](https://github.com/moarph/homeassistant_berner_torantriebe/actions/workflows/hacs.yaml/badge.svg)](https://github.com/moarph/homeassistant_berner_torantriebe/actions/workflows/hacs.yaml)
 
 > **Status:** Installable custom integration with UI setup (config flow).  
 > Implements covers, buttons, switches (and optional sensors) for the Berner Box.  
