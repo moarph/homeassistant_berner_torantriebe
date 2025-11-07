@@ -84,13 +84,6 @@ That’s expected until the integration is submitted to the HACS store.
 
 ---
 
-## Updating
-
-- If you publish GitHub **releases** (e.g., `v1.0.0`), HACS will offer updates via the release tags.  
-- Without releases, HACS tracks the latest commit.
-
----
-
 ## Development notes
 
 - Integration domain: `bernerbox` (folder and `manifest.json: "domain": "bernerbox"` must match).
