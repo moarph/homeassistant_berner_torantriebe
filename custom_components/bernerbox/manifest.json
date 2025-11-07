@@ -4,11 +4,11 @@
   "codeowners": ["@moarph"],
   "config_flow": true,
   "documentation": "https://github.com/moarph/homeassistant_berner_torantriebe#readme",
-  "issue_tracker": "https://github.com/moarph/homeassistant_berner_torantriebe/issues",
-  "iot_class": "local_polling",
   "integration_type": "hub",
-  "requirements": [],
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/moarph/homeassistant_berner_torantriebe/issues",
   "loggers": ["custom_components.bernerbox"],
+  "requirements": [],
   "version": "1.0.0"
 }
 
