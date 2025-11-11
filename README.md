@@ -1,106 +1,105 @@
-# Berner Box (Berner Torantriebe) – Home Assistant Custom Integration
+# Berner Box – Home Assistant Integration
 
-![GitHub release](https://img.shields.io/github/v/release/moarph/homeassistant_berner_torantriebe.svg)
-[![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://hacs.xyz)
-[![Validate with hassfest](https://github.com/moarph/homeassistant_berner_torantriebe/actions/workflows/hassfest.yaml/badge.svg)](https://github.com/moarph/homeassistant_berner_torantriebe/actions/workflows/hassfest.yaml)
-[![HACS validation](https://github.com/moarph/homeassistant_berner_torantriebe/actions/workflows/hacs.yaml/badge.svg)](https://github.com/moarph/homeassistant_berner_torantriebe/actions/workflows/hacs.yaml)
+[![GitHub release](https://img.shields.io/github/v/release/moarph/homeassistant_berner_torantriebe.svg?style=for-the-badge&logo=github)](https://github.com/moarph/homeassistant_berner_torantriebe/releases)
+[![hacs_badge](https://img.shields.io/badge/HACS-Integration-41BDF5.svg?style=for-the-badge&logo=homeassistant)](https://hacs.xyz)
+[![Validate with hassfest](https://github.com/moarph/homeassistant_berner_torantriebe/actions/workflows/hassfest.yaml/badge.svg?branch=main)](https://github.com/moarph/homeassistant_berner_torantriebe/actions/workflows/hassfest.yaml)
+[![HACS validation](https://github.com/moarph/homeassistant_berner_torantriebe/actions/workflows/hacs.yaml/badge.svg?branch=main)](https://github.com/moarph/homeassistant_berner_torantriebe/actions/workflows/hacs.yaml)
 
-> **Status:** Installable custom integration with UI setup (config flow).  
-> Implements covers, buttons, switches (and optional sensors) for the Berner Box.  
-> Current data flow is local (HA `iot_class: local_polling`).
+> **Official HACS integration** for connecting the *Berner Box* garage door system with Home Assistant.  
+> Developed and maintained independently by [@moarph](https://github.com/moarph).  
+> All communication runs locally – no cloud connection required.
 
 ---
 
 ## Overview
 
-This integration connects the **Berner Box** (Berner Torantriebe) to Home Assistant.  
-It aims to monitor and control garage doors and related devices via your local network.
+This integration connects your **Berner Box** (by Berner Torantriebe KG) to Home Assistant.  
+It enables monitoring and control of garage doors and related devices over your local network.
 
-- **Domain**: `bernerbox`  
-- **Folder**: `custom_components/bernerbox`
+- **Integration domain**: `bernerbox`  
+- **Folder**: `custom_components/bernerbox`  
+- **Connection type**: Local (`iot_class: local_polling`)
 
 ---
 
 ## Requirements
 
 - Home Assistant **2024.6.0 or newer**
-- **HACS** installed (recommended)
+- **HACS** installed
 
 ---
 
 ## Installation
 
-### A) HACS (recommended)
+### Through HACS (recommended)
 
-1. Add this repository as a **Custom Repository** in HACS (category: Integration).  
-   **My link:**  
-   **[Add this repo to HACS](https://my.home-assistant.io/redirect/hacs_repository/?owner=moarph&repository=homeassistant_berner_torantriebe&category=integration)**
-2. In HACS → **Integrations** → search for **“Berner Box”** → **Install**.
+1. Open **HACS → Integrations → Search for “Berner Box”**  
+   or go directly via this link:  
+   👉 [Open in HACS](https://my.home-assistant.io/redirect/hacs_repository/?owner=moarph&repository=homeassistant_berner_torantriebe&category=integration)
+2. Click **Download / Install**.
 3. **Restart** Home Assistant.
 
-### B) Manual
-
-1. Download this repository.
-2. Copy the folder `custom_components/bernerbox` to:  
-   `<config>/custom_components/bernerbox`
-3. **Restart** Home Assistant.
+> This integration is officially distributed via HACS.  
+> Manual installation is only necessary for development purposes.
 
 ---
 
 ## Configuration
 
 - Go to **Settings → Devices & Services → Add Integration → “Berner Box”**,  
-  or use this My link:  
-  **[Start config flow](https://my.home-assistant.io/redirect/config_flow_start/?domain=bernerbox)**
-- Enter your **Host/IP**, **Username**, and **Password**.  
-  The flow will discover your items and create a config entry.
+  or click this My-link:  
+  👉 [Start Config Flow](https://my.home-assistant.io/redirect/config_flow_start/?domain=bernerbox)
+- Enter your **Box IP or hostname**, **username**, and **password**.
+- The integration will automatically discover and configure your devices.
 
-> Credentials are stored locally in Home Assistant.
+> Your credentials are stored locally inside Home Assistant.
 
 ---
 
-## Entities (current set)
+## Entities
 
-- **Cover** (`cover`): Garage door control (open/close/stop; state).  
-- **Button** (`button`):  
-  - “Update all / Refresh”  
-  - “Reboot Box”  
-  - Per-item “Impulse” (momentary action)
-- **Switch** (`switch`): “SSH Access” on/off
-- **Sensor** (`sensor`): Item states via a shared coordinator
-  
+| Platform | Description |
+|-----------|--------------|
+| **Cover** | Control garage doors (open, close, stop) |
+| **Button** | Manual actions like “Impulse”, “Reboot”, or “Update all” |
+| **Switch** | Toggle SSH access |
+| **Sensor** | Optional status sensors (can be enabled via `Platform.SENSOR`) |
+
 ---
 
-## Troubleshooting / FAQ
+## Troubleshooting
 
-**I don’t see entities after setup.**  
-Make sure the config flow completed and items were found. Then restart Home Assistant.
+**No entities appear after setup?**  
+Make sure the configuration flow finished successfully and restart Home Assistant.
 
-**My links don’t open in HA.**  
-Ensure the **My Home Assistant** helper is enabled (part of `default_config`).
-
-**HACS shows “Custom” badge.**  
-That’s expected until the integration is submitted to the HACS store.
+**My-links don’t open in HA.**  
+Ensure the *My Home Assistant* helper is active (part of `default_config`).
 
 ---
 
 ## Development notes
 
-- Integration domain: `bernerbox` (folder and `manifest.json: "domain": "bernerbox"` must match).
-- UI setup via `config_flow.py` (`"config_flow": true` in `manifest.json`).
-- Translations can be added in `custom_components/bernerbox/translations/` (e.g., `en.json`, `de.json`).
-- For status polling and shared state, a `DataUpdateCoordinator` is used.
+- **Domain:** `bernerbox`  
+- **Config Flow:** enabled (`config_flow: true`)  
+- **Structure:** `custom_components/bernerbox/`  
+- **Coordinator:** shared `DataUpdateCoordinator` for item status polling  
+- **Brand assets:** hosted in [home-assistant/brands](https://github.com/home-assistant/brands/tree/master/custom_integrations/bernerbox)  
 
 ---
 
 ## License
 
-MIT
+MIT © [@moarph](https://github.com/moarph)
 
 ---
 
 ## Disclaimer
 
-This is an **unofficial** integration and is **not affiliated with, endorsed by, or supported by Berner Torantriebe KG**.
+This integration is **not affiliated with, endorsed by, or supported by Berner Torantriebe KG**.  
+It is an **independent open-source project**, officially listed in the **HACS registry**.  
+Use at your own discretion.
 
-Use at your own risk. The author is not responsible for any damage.
+---
+
+### 🏷 Version
+Current release: ![GitHub release](https://img.shields.io/github/v/release/moarph/homeassistant_berner_torantriebe.svg?label=Latest%20Release)
